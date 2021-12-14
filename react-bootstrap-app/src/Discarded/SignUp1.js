@@ -1,6 +1,5 @@
 import {React, useState} from "react";
 import {Button, Modal, CloseButton} from "react-bootstrap";
-import styles from "./ModalComp.css";
 import { useFormik } from 'formik';
 function SignUp1(){
     const [show, setShow] = useState(false);

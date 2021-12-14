@@ -1,6 +1,6 @@
 import {React, useState} from "react";
-import {Button, Modal, CloseButton} from "react-bootstrap";
-import styles from "./ModalComp.css";
+import {Button, Modal, CloseButton, Container, Row, Col} from "react-bootstrap";
+// import styles from "./ModalComp.css";
 
 function ModalComp(){
     const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ function ModalComp(){
         <Button variant="primary" onClick={handleShow}>
           Button
         </Button>
-  
+
         <Modal 
           show={show}
           onHide={handleClose}
@@ -50,7 +50,9 @@ function ModalComp(){
           <button className="continue">Continue</button>
           </Modal.Footer>
           </div>
+          
         </Modal>
+        
       </>
     );
   }

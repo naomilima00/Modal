@@ -1,6 +1,5 @@
 import {React, useState} from "react";
 import {Button, Modal, CloseButton} from "react-bootstrap";
-import styles from "./ModalComp.css";
 
 function ModalGoals(){
     const [show, setShow] = useState(false);

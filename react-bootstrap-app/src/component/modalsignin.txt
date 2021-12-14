@@ -5,6 +5,23 @@ import {Formik} from 'formik';
 import styles from "./ModalSignIn.css";
 
 function ModalSignIn(){
+    // const validate = values => {
+    //   const errors = {};
+    
+    //   if (!values.username) {
+    //     errors.username = 'Required';
+    //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    //     errors.username = 'Invalid username';
+    //   }
+    
+    //   if (!values.password) {
+    //     errors.lastName = 'Required';
+    //   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    //     errors.email = 'Invalid password';
+    //   }
+
+    //   return errors;
+    // };
 
     const [show, setShow] = useState(false);
 
@@ -12,6 +29,27 @@ function ModalSignIn(){
     const handleShow = () => setShow(true);
     
     
+    const SignInForm = () => {
+      const [validData, setValidData] = useState({});
+      const onSubmit = (values) => {
+        setValidData(values);
+      };
+    return(
+          <>
+          <Formik
+            onSubmit={onSubmit}
+            validateOnChange={false}
+            initialValues={{
+              email: '',
+              password: ''
+            }}>
+          {({
+            handleSubmit,
+            handleChange,
+            values,
+            touched,
+            errors,
+          }) => {
             return (   
               <>
                 <Button class="btn" onClick={handleShow}>
@@ -29,20 +67,22 @@ function ModalSignIn(){
                         aria-labelledby="contained-modal-title-vcenter"
                       >
                       <div>
-                        <Modal.Header closeButton className="modal-header-login">
+                        <Modal.Header closeButton>
                           <div><Image src="./logo.png" className="img-fluid"/></div>
-                        <Modal.Title class="title-login">Welcome to Cookbook</Modal.Title>
+                        <Modal.Title class="title">Welcome to Cookbook</Modal.Title>
                         </Modal.Header>
 
-                        <Modal.Body className="modal-body-login">
-                          <Form>
+                        <Modal.Body>
+                          <Form noValidate onSubmit={handleSubmit}>
                             <div className="login">
                               <Form.Group className="input" controlId="exampleForm.ControlInput1">
-                                  <Form.Control type="username" placeholder="username" />
+                                  <Form.Control type="username" placeholder="username" value={values.username} onChange={handleChange} isInvalid={errors.username}/>
+                                  <Form.Control.Feedback type="invalid"> {errors.username} </Form.Control.Feedback>
                               </Form.Group>
                                 
                               <Form.Group className="input" controlId="exampleForm.ControlInput">
-                                  <Form.Control type="password" placeholder="password"/>
+                                  <Form.Control type="password" placeholder="password" value={values.password} onChange={handleChange} isInvalid={errors.password}/>
+                                  <Form.Control.Feedback type="invalid"> {errors.password} </Form.Control.Feedback>
                               </Form.Group>
                                   
                             </div>
@@ -53,7 +93,7 @@ function ModalSignIn(){
                           </Form>
                         </Modal.Body>
                             
-                        <Modal.Footer className="modal-footer-login">
+                        <Modal.Footer>
                             <div class="forgot-password">Forgot Password?</div>
                         </Modal.Footer>
                       </div>
@@ -63,7 +103,10 @@ function ModalSignIn(){
                 </Container>
               </>
             );
-          
-        
-        }
+          }}
+          </Formik>
+          </>
+    );
+    }
+    }
   export default ModalSignIn;

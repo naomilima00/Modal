@@ -1,21 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import ModalComp from "./component/ModalComp";
-import ModalDislikes from "./component/ModalDislikes";
-import ModalGoals from "./component/ModalGoals";
 import ModalSignIn from './component/ModalSignIn';
-import FinishSignUp from './component/FinishSignUp';
-import SignUp1 from './component/SignUp1';
-import { useFormik } from 'formik';
+import Landing from './Landing';
+import "./global.css";
+import ModalComp from "./Discarded/ModalComp";
+import ModalDislikes from "./Discarded/ModalDislikes";
+// import FinishSignUp from './component/Discarded/FinishSignUp';
+import SignUp1 from './Discarded/SignUp1';
+import ModalGoals from './Discarded/ModalGoals';
+// import { useFormik } from 'formik';
+// import {Route} from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <ModalGoals/>
-      {/* <SignUp1/> */}
-      {/* <FinishSignUp/> */}
-      {/* <ModalSignIn/> */}
-      {/* <ModalDislikes/> */}
+      <ModalSignIn/>
    </div> 
   )
 }
